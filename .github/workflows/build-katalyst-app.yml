@@ -1,0 +1,132 @@
+name: Build the Katalyst project and deploy site to GitHub
+on:
+  workflow_call:
+    secrets:
+      CLOUDFLARE_ACCOUNT_ID:
+        description: 'Cloudflare account ID for deploying build to Cloudflare Pages using wrangler'
+        required: true
+      CLOUDFLARE_API_TOKEN:
+        description: 'Cloudflare API Token for deploying build to Cloudflare Pages using wrangler'
+        required: true
+  push:
+    # Runs on pushes targeting the default branch
+    branches: [ main ]
+
+    # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+  packages: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+
+jobs:
+  # Build Job
+  build-for-github-pages:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2.4.2
+
+      - name: Run Katalyst SSG, generate documentation, publish maven artifact
+        run: |
+          chmod -R +x ./.github/prebuilt/ImageMagick-Ubuntu-22.04/bin/
+          export PATH=./.github/prebuilt/ImageMagick-Ubuntu-22.04/bin:$PATH
+          export LD_LIBRARY_PATH=./.github/prebuilt/ImageMagick-Ubuntu-22.04/lib:$LD_LIBRARY_PATH
+          magick identify -version
+          ./gradlew :site:run :katalyst:dokkaHtml :katalyst:publish :kotlin-syntax-highlighter-plugin:publish :responsive-image:publish
+          mkdir ./site/dist/doc
+          cp -r ./katalyst/build/dokka/html/* ./site/dist/doc
+          cp -r ./katalyst/build/repos/maven/ ./site/dist
+          cp -r ./kotlin-syntax-highlighter-plugin/build/repos/maven/ ./site/dist
+          cp -r ./responsive-image/build/repos/maven/ ./site/dist
+        env:
+          USERNAME: droidcrafts
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SITE_PREFIX: /Katalyst
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: './site/dist/'
+
+  build-for-cloudflare-pages:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2.4.2
+
+      - name: Run Katalyst SSG, generate documentation, publish maven artifact
+        run: |
+          chmod -R +x ./.github/prebuilt/ImageMagick-Ubuntu-22.04/bin/
+          export PATH=./.github/prebuilt/ImageMagick-Ubuntu-22.04/bin:$PATH
+          export LD_LIBRARY_PATH=./.github/prebuilt/ImageMagick-Ubuntu-22.04/lib:$LD_LIBRARY_PATH
+          magick identify -version
+          ./gradlew :site:run :katalyst:dokkaHtml :katalyst:publishAllPublicationsToLocalPackagesRepository :kotlin-syntax-highlighter-plugin:publishAllPublicationsToLocalPackagesRepository :responsive-image:publishAllPublicationsToLocalPackagesRepository
+          mkdir ./site/dist/doc
+          cp -r ./katalyst/build/dokka/html/* ./site/dist/doc
+          cp -r ./katalyst/build/repos/maven/ ./site/dist
+          cp -r ./kotlin-syntax-highlighter-plugin/build/repos/maven/ ./site/dist
+          cp -r ./responsive-image/build/repos/maven/ ./site/dist
+
+      - name: Upload Static Pages Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist
+          path: './site/dist/'
+
+  cloudflare-pages-deploy:
+    runs-on: ubuntu-22.04
+    needs: build-for-cloudflare-pages
+    steps:
+      - name: Setup Nodejs v18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Restore Static Pages Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: dist
+          path: './site/dist/'
+
+      - name: Deploy to Cloudflare Pages with Wrangler
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: npx wrangler pages publish ./site/dist/ --project-name 'katalyst'
+  
+  github-pages-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-22.04
+    needs: build-for-github-pages
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2

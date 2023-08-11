@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="160mm"
+   height="64mm"
+   viewBox="0 0 160 64"
+   version="1.1"
+   id="svg5"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs2">
+    <radialGradient
+       id="paint0_radial"
+       cx="0"
+       cy="0"
+       r="1"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(73.311103,0,0,73.311103,61.8732,2.63097)">
+      <stop
+         offset="0.00343514"
+         stop-color="#EF4857"
+         id="stop1242" />
+      <stop
+         offset="0.4689"
+         stop-color="#D211EC"
+         id="stop1244" />
+      <stop
+         offset="1"
+         stop-color="#7F52FF"
+         id="stop1246" />
+    </radialGradient>
+    <radialGradient
+       id="paint0_radial-5"
+       cx="0"
+       cy="0"
+       r="1"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-73.311103,0,0,-73.311103,82.1268,61.36902)">
+      <stop
+         offset="0.00343514"
+         stop-color="#EF4857"
+         id="stop1242-3"
+         style="stop-color:#39a1e1;stop-opacity:1;" />
+      <stop
+         offset="0.4689"
+         stop-color="#D211EC"
+         id="stop1244-5" />
+      <stop
+         offset="1"
+         stop-color="#7F52FF"
+         id="stop1246-6" />
+    </radialGradient>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath5404">
+      <rect
+         style="fill:#6a74cb;fill-opacity:0.580621;stroke:none;stroke-width:7.99999;stroke-linecap:square;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+         id="rect5406"
+         width="43.928947"
+         height="63.996685"
+         x="33.142334"
+         y="0.0036127805"
+         ry="0" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath5404-7">
+      <rect
+         style="fill:#6a74cb;fill-opacity:0.580621;stroke:none;stroke-width:7.99999;stroke-linecap:square;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+         id="rect5406-5"
+         width="43.928947"
+         height="63.996685"
+         x="33.142334"
+         y="0.0036127805"
+         ry="0" />
+    </clipPath>
+  </defs>
+  <g
+     id="layer1"
+     style="display:inline">
+    <path
+       d="M 64,63.99999 H 0 V 0 H 64 L 32,32 Z"
+       fill="url(#paint0_radial)"
+       id="path1240"
+       style="fill:#fb772b;fill-opacity:1;stroke-width:1" />
+    <path
+       d="m 96,0 h 64.00001 V 63.99999 H 96 L 128,32 Z"
+       fill="url(#paint0_radial)"
+       id="path1240-2"
+       style="display:inline;fill:#6a74cb;fill-opacity:1;stroke-width:1" />
+  </g>
+</svg>
