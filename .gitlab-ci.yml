@@ -1,0 +1,19 @@
+pages:
+  image: eclipse-temurin:17-jammy
+  environment: production
+  artifacts:
+    paths:
+      - "public"
+  script:
+    - chmod -R +x ./.github/prebuilt/ImageMagick-Ubuntu-22.04/bin/
+    - export PATH=./.github/prebuilt/ImageMagick-Ubuntu-22.04/bin:$PATH
+    - export LD_LIBRARY_PATH=./.github/prebuilt/ImageMagick-Ubuntu-22.04/lib:$LD_LIBRARY_PATH
+    - magick identify -version
+    - ./gradlew :site:run :katalyst:dokkaHtml :katalyst:publish :kotlin-syntax-highlighter-plugin:publish :responsive-image:publish
+    - mkdir ./public
+    - cp -r ./site/dist/* ./public
+    - mkdir ./public/doc
+    - cp -r ./katalyst/build/dokka/html/* ./public/doc
+    - cp -r ./katalyst/build/repos/maven/ ./public
+    - cp -r ./kotlin-syntax-highlighter-plugin/build/repos/maven/ ./public
+    - cp -r ./responsive-image/build/repos/maven/ ./public
