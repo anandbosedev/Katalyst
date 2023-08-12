@@ -5,7 +5,7 @@ pages:
     paths:
       - "public"
   script:
-    - ./gradlew :site:run :katalyst:dokkaHtml :katalyst:publish :kotlin-syntax-highlighter-plugin:publish :responsive-image:publish
+    - ./gradlew :site:run :katalyst:dokkaHtml :katalyst:publishMavenPublicationToLocalPackagesRepository :kotlin-syntax-highlighter-plugin:publishMavenPublicationToLocalPackagesRepository :responsive-image:publishMavenPublicationToLocalPackagesRepository
     - mkdir ./public
     - cp -r ./site/dist/* ./public
     - mkdir ./public/doc
