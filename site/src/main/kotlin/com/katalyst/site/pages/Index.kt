@@ -307,7 +307,7 @@ suspend fun buildIndexPage(environment: Environment) {
                 kotlinCode("""
                     repositories {
                         maven {
-                            url = uri("https://maven.pkg.github.com/droidcrafts/katalyst")
+                            url = uri("https://maven.pkg.github.com/droidcrafts/Katalyst")
                             credentials {
                                 username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
                                 password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
