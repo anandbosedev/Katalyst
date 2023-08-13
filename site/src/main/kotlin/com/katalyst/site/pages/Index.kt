@@ -293,34 +293,6 @@ suspend fun buildIndexPage(environment: Environment) {
                 text("You can start your static site right now with the pre-release builds of Katalyst in GitHub ")
                 text("Packages Maven repository or the public Maven repository.")
             }
-            h3("Set up GitHub Packages Maven Repository")
-            p {
-                a(
-                    href = "https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-gradle-registry",
-                    text = "GitHub Packages Maven Repository",
-                    customAttributes = mapOf("target" to "_blank")
-                )
-                text(" requires authentication using your ")
-                text("GitHub personal access token with at least ")
-                code("read:packages", className = "highlight")
-                text(" scope to install Katalyst packages.")
-                kotlinCode("""
-                    repositories {
-                        maven {
-                            url = uri("https://maven.pkg.github.com/droidcrafts/katalyst")
-                            credentials {
-                                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
-                                password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
-                            }
-                        }
-                    }
-                    dependencies {
-                        implementation("com.katalyst:katalyst:1.0.0-SNAPSHOT")
-                        implementation("com.katalyst:kotlin-syntax-highlighter-plugin:1.0.0-SNAPSHOT")
-                        implementation("com.katalyst:responsive-image:1.0.0-SNAPSHOT")
-                    }
-                """.trimIndent())
-            }
             h3("Set up Katalyst Public Maven Repository")
             p {
                 text("The access to the public Maven repository is fairly easier and does not require authentication. ")

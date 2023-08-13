@@ -32,14 +32,14 @@ dependencies {
 
 publishing {
     repositories {
-        maven {
+        /*maven {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/droidcrafts/katalyst")
             credentials {
                 username = project.findProperty("gpr.user") as String? ?: System.getenv("USERNAME")
                 password = project.findProperty("gpr.key") as String? ?: System.getenv("GITHUB_TOKEN")
             }
-        }
+        }*/
         maven {
             name = "LocalPackages"
             url = uri(layout.buildDirectory.dir("repos/maven"))
