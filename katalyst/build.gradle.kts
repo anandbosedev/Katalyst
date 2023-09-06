@@ -34,7 +34,7 @@ publishing {
     repositories {
         /*maven {
             name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/droidcrafts/katalyst")
+            url = uri("https://maven.pkg.github.com/anandbosetech/katalyst")
             credentials {
                 username = project.findProperty("gpr.user") as String? ?: System.getenv("USERNAME")
                 password = project.findProperty("gpr.key") as String? ?: System.getenv("GITHUB_TOKEN")
@@ -57,7 +57,7 @@ tasks.withType<DokkaTask>().configureEach {
         configureEach {
             includes.from("Module.md")
             sourceLink {
-                remoteUrl.set(URI("https://github.com/droidcrafts/Katalyst/blob/main/katalyst").toURL())
+                remoteUrl.set(URI("https://github.com/anandbosetech/Katalyst/blob/main/katalyst").toURL())
                 localDirectory.set(projectDir)
             }
         }

@@ -36,8 +36,8 @@ fun HtmlContext.includeSiteHead(title: String, description: String, imagePath: S
         )
         meta(name = "twitter:image:src", content = imagePath)
         meta(name = "twitter:image:alt", content = title)
-        meta(name = "twitter:creator", content = "@droidcrafts")
-        meta(name = "twitter:site", content = "@droidcrafts")
+        meta(name = "twitter:creator", content = "@anandbosetech")
+        meta(name = "twitter:site", content = "@anandbosetech")
 
         deferred(InlineStyleGenerator(css))
 

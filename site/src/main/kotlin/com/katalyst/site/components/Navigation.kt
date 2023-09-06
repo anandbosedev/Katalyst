@@ -5,7 +5,7 @@ import com.katalyst.dom.Node
 
 fun BodyContext.includeSiteNavigation() {
     nav(className = "site-nav") {
-        a(className = "nav-menu-item", href = "https://github.com/droidcrafts/Katalyst", text = "GitHub")
+        a(className = "nav-menu-item", href = "https://github.com/anandbosetech/Katalyst", text = "GitHub")
         text(" ")
         a(className = "nav-menu-item", href = "https://katalyst.pages.dev/doc", text = "API Docs")
     }

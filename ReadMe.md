@@ -20,5 +20,5 @@ Katalyst is a Kotlin/JVM library for developing static websites. Currently, Kata
 
 | # | Plugins Roadmap           | Status                                                                                                                                  |
 |---|---------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
-| 1 | Responsive Images         | Available: [`responsive-image`](https://github.com/droidcrafts/Katalyst/tree/main/responsive-image) module                                |
-| 2 | Kotlin Syntax Highlighter | Available: [`kotlin-syntax-highligher-plugin`](https://github.com/droidcrafts/Katalyst/tree/main/kotlin-syntax-highlighter-plugin) module |
+| 1 | Responsive Images         | Available: [`responsive-image`](https://github.com/anandbosetech/Katalyst/tree/main/responsive-image) module                                |
+| 2 | Kotlin Syntax Highlighter | Available: [`kotlin-syntax-highligher-plugin`](https://github.com/anandbosetech/Katalyst/tree/main/kotlin-syntax-highlighter-plugin) module |

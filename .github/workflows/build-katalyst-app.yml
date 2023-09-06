@@ -56,7 +56,7 @@ jobs:
           cp -r ./kotlin-syntax-highlighter-plugin/build/repos/maven/ ./site/dist
           cp -r ./responsive-image/build/repos/maven/ ./site/dist
         env:
-          USERNAME: droidcrafts
+          USERNAME: anandbosetech
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SITE_PREFIX: /Katalyst
 

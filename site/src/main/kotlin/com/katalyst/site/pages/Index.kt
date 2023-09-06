@@ -125,7 +125,7 @@ suspend fun buildIndexPage(environment: Environment) {
                 text("For a real-life use case, you can refer to the implementation of ")
                 code(className = "highlight") {
                     a(
-                        href = "https://github.com/droidcrafts/Katalyst/tree/main/responsive-image",
+                        href = "https://github.com/anandbosetech/Katalyst/tree/main/responsive-image",
                         text = "responsive-image",
                         customAttributes = mapOf("target" to "_blank"),
                     )
@@ -133,7 +133,7 @@ suspend fun buildIndexPage(environment: Environment) {
                 text(" and ")
                 code(className = "highlight") {
                     a(
-                        href = "https://github.com/droidcrafts/Katalyst/tree/main/kotlin-syntax-highlighter-plugin",
+                        href = "https://github.com/anandbosetech/Katalyst/tree/main/kotlin-syntax-highlighter-plugin",
                         text = "kotlin-syntax-highlighter-plugin",
                         customAttributes = mapOf("target" to "_blank"),
                     )
@@ -201,7 +201,7 @@ suspend fun buildIndexPage(environment: Environment) {
                 code("HtmlTreeStructureGenerator", className = "highlight")
                 text(" shown here is copied from the actual source code ")
                 a(
-                    href = "https://github.com/droidcrafts/Katalyst/blob/main/site/src/main/kotlin/com/katalyst/site/pages/Example.kt",
+                    href = "https://github.com/anandbosetech/Katalyst/blob/main/site/src/main/kotlin/com/katalyst/site/pages/Example.kt",
                     text = "(Example.kt)"
                 )
                 text(" and embedded while building this page! ")
@@ -312,7 +312,7 @@ suspend fun buildIndexPage(environment: Environment) {
             }
             blockquote {
                 text("Feel free to checkout the project source code in ")
-                a(href = "https://github.com/droidcrafts/Katalyst", text = "GitHub")
+                a(href = "https://github.com/anandbosetech/Katalyst", text = "GitHub")
                 text(". If you have any comments, ideas, suggestions or anything, ")
                 a(href = "mailto:anandbose16@gmail.com", text = "just let me know!")
             }
